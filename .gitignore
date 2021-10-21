@@ -1,2 +1,5 @@
 .env
 .ipynb_checkpoints
+.vscode
+.streamlit/ipynb_checkpoints
+.src/ipynb_checkpoints
