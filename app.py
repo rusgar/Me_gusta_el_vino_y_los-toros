@@ -8,7 +8,7 @@ from PIL import Image
 
 
 # Load  model a 
-model = joblib.load(open("modelo_wine.joblib","rb"))
+model = joblib.load(open("src/modelo_wine.joblib","rb"))
 
 def data_preprocessor(df):
     """función preprocesa la entrada del usuario
@@ -52,7 +52,7 @@ Esta aplicación predice la ** Calidad del vino ** mediante la entrada de ** car
 """)
 
 #leer en la imagen del vino y renderizar con streamlit
-image = Image.open('../image/blanco-vs-tinto.png')
+image = Image.open('blanco-vs-tinto.png')
 st.image(image, caption='Tinto o Blanco',use_column_width=True)
 
 st.sidebar.header('Introduzca sus cualidades') #colección de parámetros de entrada del usuario con side bar

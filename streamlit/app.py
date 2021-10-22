@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd 
 import joblib
 import matplotlib.pyplot as plt
-from matplotlib.ticker import StrMethodFormatter
 import streamlit as st
 from PIL import Image
 
@@ -75,7 +74,7 @@ def get_user_input():
     citric_acid  = st.sidebar.slider('citric acid', 0.0, 1.66, 0.31)
     residual_sugar  = st.sidebar.slider('residual_sugar', 0.60, 65.8, 5.44)
     chlorides  = st.sidebar.slider('chlorides', 0.009, 0.611, 0.056)
-    free_sulfur_dioxide = st.sidebar.slider('free sulfur dioxide', 1, 289, 30.52)
+    free_sulfur_dioxide = st.sidebar.slider('free sulfur dioxide', 1.00, 289.00, 30.52)
     total_sulfur_dioxide = st.sidebar.slider('total sulfur dioxide', 6, 440, 115)
     density = st.sidebar.slider('density', 0.987, 1.038, 0.994)
     pH = st.sidebar.slider('pH', 2.72, 4.01, 3.21)
