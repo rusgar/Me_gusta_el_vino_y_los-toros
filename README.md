@@ -1,4 +1,5 @@
-# Me_gusta_el_vino_y_los-toros
+# White-or-red-wine
+
 analisis de los dataset de vinos tintos y blancos
 
 https://www.kaggle.com/piyushagni5/white-wine-quality
