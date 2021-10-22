@@ -3,13 +3,20 @@ Modelo-TOPT ( Modelo con los dataset sin el  rango intercuartil (IQR))
 Composicion del Data Frame (rows, columns): (6497, 13)
 Comparacion-
 ****************************************-
-Accuracy Score of Train Model : 0.797-
-Accuracy Score of Test  Model : 0.768
+Accuracy Score of Train Model : 0.473-
+Accuracy Score of Test  Model : 0.447
+
+
+
+Comparacion
+****************************************
+Accuracy Score of Train Model : 0.80
+Accuracy Score of Test  Model : 0.80
 AutoML
-Best pipeline: KNeighborsClassifier
-Accuracy Score : 1.00
+Best pipeline: RandomForestClassifier
+Accuracy Score : 0.896
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 Modelo-TOPT ( Modelo con los dataset con el el rango intercuartil (IQR))
 Composicion del Data Frame (rows, columns): (5037, 14)

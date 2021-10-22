@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
 
 # NOTE: Make sure that the outcome column is labeled 'target' in the data file
 tpot_data = pd.read_csv('PATH/TO/DATA/FILE', sep='COLUMN_SEPARATOR', dtype=np.float64)
@@ -9,8 +9,8 @@ features = tpot_data.drop('target', axis=1)
 training_features, testing_features, training_target, testing_target = \
             train_test_split(features, tpot_data['target'], random_state=None)
 
-# Average CV score on the training set was: 0.9661385681293304
-exported_pipeline = KNeighborsClassifier(n_neighbors=66, p=1, weights="distance")
+# Average CV score on the training set was: 0.8152978030437614
+exported_pipeline = RandomForestClassifier(bootstrap=True, criterion="gini", max_features=0.8, min_samples_leaf=11, min_samples_split=3, n_estimators=100)
 
 exported_pipeline.fit(training_features, training_target)
 results = exported_pipeline.predict(testing_features)
