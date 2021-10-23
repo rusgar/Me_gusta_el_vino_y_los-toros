@@ -65,17 +65,17 @@ def get_user_input():
 
     """
     color = st.sidebar.selectbox("Seleccione el tipo de Vino",("white", "red"))
-    fixed_acidity = st.sidebar.slider('fixed acidity', 4.8, 12.3, 7.12)
-    volatile_acidity = st.sidebar.slider('volatile acidity', 0.08, 1.05, 0.32)
-    citric_acid  = st.sidebar.slider('citric acid', 0.000, 0.730, 0.305)
-    residual_sugar  = st.sidebar.slider('residual_sugar', 0.6, 22.0, 5.4)
-    chlorides  = st.sidebar.slider('chlorides', 0.015, 0.119, 0.051)
-    free_sulfur_dioxide = st.sidebar.slider('free sulfur dioxide', 1.00, 80.00, 30.12)
-    total_sulfur_dioxide = st.sidebar.slider('total sulfur dioxide', 6.00, 255.00, 115.17)
-    density = st.sidebar.slider('density', 0.987, 1.001, 0.994)
-    pH = st.sidebar.slider('pH', 2.82, 3.68, 3.21)
-    sulphates = st.sidebar.slider('sulphates', 0.22, 0.98, 0.51)
-    alcohol = st.sidebar.slider('alcohol', 8.4, 14.2, 10.49)
+    fixed_acidity = st.sidebar.slider('Fixed Acidity', 4.8, 12.3, 7.12)
+    volatile_acidity = st.sidebar.slider('Volatile Acidity', 0.08, 1.05, 0.32)
+    citric_acid  = st.sidebar.slider('Citric Acid', 0.000, 0.730, 0.305)
+    residual_sugar  = st.sidebar.slider('Residual Sugar', 0.6, 22.0, 5.4)
+    chlorides  = st.sidebar.slider('Chlorides', 0.015, 0.119, 0.051)
+    free_sulfur_dioxide = st.sidebar.slider('Free Sulfur Dioxide', 1.00, 80.00, 30.12)
+    total_sulfur_dioxide = st.sidebar.slider('Total Sulfur Dioxide', 6.00, 255.00, 115.17)
+    density = st.sidebar.slider('Density', 0.987, 1.001, 0.994)
+    pH = st.sidebar.slider('Ph', 2.82, 3.68, 3.21)
+    sulphates = st.sidebar.slider('Sulphates', 0.22, 0.98, 0.51)
+    alcohol = st.sidebar.slider('Alcohol', 8.4, 14.2, 10.49)
     
     features = {'color': color,
             'fixed_acidity': fixed_acidity,
