@@ -17,6 +17,8 @@ Dataset is from Kaggle. This datasets is related to red variants of the Portugue
 
 After cleaning the two datasets, using the appropriate tools, we join them and check with the two models the differences between clean or unclean data
 
+The set of both data contains a total of 12 variables, which were recorded for 5037 observations. These data will allow us to create different regression models to determine how different independent variables help predict our dependent variable, quality.
+
 # Dependences
 Here we can find the libraries we will use in order to develop a solution for this problem.
 
