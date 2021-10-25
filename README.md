@@ -1,7 +1,6 @@
 # White-or-red-wine-app
 
-![White-or-red-wine](https://github.com/rusgar/White-or-red-wine/blob/main/image/red-and-wine.jpg)
-
+<img src="image/red-and-wine.jpg" width="800" height="380">
 
 # Project Overview
 
@@ -65,7 +64,7 @@ Input variables (based on physicochemical tests):
 Output variable (based on sensory data): 
 12. quality (score between 3 to 9)
 
-![Calidad del Vino](https://github.com/rusgar/White-or-red-wine/blob/main/image/calidad-vino.png)
+<img src="image/calidad-vino.png" width="500" height="300">
 
 # The Data Science
 
