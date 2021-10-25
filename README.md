@@ -202,22 +202,25 @@ From this link we can upload our app in production without any difficulty, it wi
 
 4- After a few seconds on our right we will see how the commands are being executed ... to have our app with its url
 
-# APP
+# Stack and  pip list
 
 ![Python 3.9.2](https://img.shields.io/badge/Python_v3.9.2-F7D448?&logo=python&logoColor=356c9b)  ![Streamlit 1.1.0](https://img.shields.io/badge/-Streamlit_v1.1.0-orange?logo=streamlit&logoColor=#8A4A4F)  ![Jupyter 6.3.0](https://img.shields.io/badge/Jupyter_v6.3.0-black?&logo=Jupyter&logoColor=eb5f05) ![NUmpy](https://img.shields.io/badge/Numpy_v1.19.5-black?&logo=numpy&logoColor=4B73C9) ![Pandas](https://img.shields.io/badge/Pandas_v1.2.4-F7D448?&logo=pandas&logoColor=120751)
-![Scikit learn](https://img.shields.io/badge/Scikit_learn_v0.24.2-3294C7?&logo=scikit-learn&logoColor=F09437)
+![Scikit learn](https://img.shields.io/badge/Scikit_learn_v0.24.2-3294C7?&logo=scikit-learn&logoColor=F09437) ![Plotly](https://img.shields.io/badge/Plotly_v5.3.1-black?&logo=plotly&logoColor=white) ![Kaggle](https://img.shields.io/badge/Kaggle-black?&logo=Kaggle&logoColor=1FB8F7) 
 
 
 
 ![Matplotlib 3.4.3](https://img.shields.io/badge/Matplotlib-_v3.4.3-F7D448) ![TPOT 0.11.7](https://img.shields.io/badge/TPOT-_v0.11.7-0A2C74) ![Joblib 1.0.1](https://img.shields.io/badge/Joblib-_v1.0.1-DA5316) ![Pillow](https://img.shields.io/badge/Pillow-_v8.4.0-87DEF7)
 
 
+
+
 ![ML](https://img.shields.io/badge/Machine-Learning-blue) ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-     “El vino hace que la vida diaria sea más fácil, menos apresurada, con menos tensiones y con más tolerancia.” 
+
+# APP to enjoy
+
+        “El vino hace que la vida diaria sea más fácil, menos apresurada, con menos tensiones y con más tolerancia.” 
                                                                                           --- Benjamin Franklin
-
-
 [White-or-red-wine](https://share.streamlit.io/rusgar/white-or-red-wine/main/app.py)
 
 
