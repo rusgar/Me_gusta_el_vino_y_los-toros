@@ -20,18 +20,29 @@ After cleaning the two datasets, using the appropriate tools, we join them and c
 # Dependences
 Here we can find the libraries we will use in order to develop a solution for this problem.
 
-**numpy|pandas**: Will help us treat the data.
+**numpy|pandas**: Will help us treat the data. 
+
+* [pandas](http://pandas.pydata.org/)
+* [numpy](http://www.numpy.org/)
 
 **matplotlib|seaborn**: Will help us plot the information so we can visualize it in different ways and have a better understanding of it.
 
+* [matplotlib](http://matplotlib.org/)
+* [seaborn](https://stanford.edu/~mwaskom/software/seaborn/)
+
 **the interquartile range (IQR)**: We will use it to disperse the data and eliminate outliers and out-of-range values.
+
+* [IQR](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html)
 
 **sklearn**: Will provide all necessary tools to train our models and test them afterwards.
 
+* [sklearn](http://scikit-learn.org/stable/)
+
 **math**: Will provide some functions we might want to use when testing our models (sqrt)
+* [math](http://www.w3big.com/es/python/func-number-sqrt.html)
 
 **streamlit** : It is the library that makes it easy to create web applications to display results of your data analysis.
-
+* [streamlit](https://streamlit.io/)
 
 
 ##### Attributes Information
