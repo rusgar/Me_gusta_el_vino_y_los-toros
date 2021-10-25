@@ -5,26 +5,29 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import StrMethodFormatter
 import streamlit as st
 from PIL import Image
+from sklearn.ensemble import RandomForestClassifier
+
+
 
 
 # Load  model a 
 model = joblib.load(open("src/modelo_wine.joblib","rb"))
 
-def data_preprocessor(df):
+def data_preprocesador(df):
     """función preprocesa la entrada del usuario
         return type: pandas dataframe
     """
     df.color = df.color.map({'white':0, 'red':1})
     return df
 
-def visualize_confidence_level(prediction_proba):
+def visualizacion(prediction_proba):
     """
     crear un gráfico de barras de inferencia renderizado con streamlit en tiempo real 
     return type : matplotlib bar chart  
     """
     data = (prediction_proba[0]*100).round(2)
     grad_percentage = pd.DataFrame(data = data,columns = ['Percentage'],index = ['Bajo','Mediano','Bueno'])
-    ax = grad_percentage.plot(kind='barh', figsize=(7, 4), color='#FB6942', zorder=10, width=0.5)
+    ax = grad_percentage.plot(kind='barh', figsize=(8, 6), color='#FB6942', zorder=10, width=0.5)
     ax.legend().set_visible(False)
     ax.set_xlim(xmin=0, xmax=100)
     
@@ -52,7 +55,7 @@ Esta aplicación predice la ** Calidad del vino ** mediante la entrada de ** car
 """)
 
 #leer en la imagen del vino y renderizar con streamlit
-image = Image.open('blanco-vs-tinto.png')
+image = Image.open('image/blanco-vs-tinto.png')
 st.image(image, caption='Tinto o Blanco',use_column_width=True)
 
 st.sidebar.header('Introduzca sus cualidades') #colección de parámetros de entrada del usuario con side bar
@@ -95,12 +98,23 @@ def get_user_input():
     return data
 
 input_df = get_user_input()
-processed_input = data_preprocessor(input_df)
+procesar_input = data_preprocesador(input_df)
 
 st.subheader('Caracteristicas Introducidas')
 st.write(input_df)
 
-predict = model.predict(processed_input)
-predict_proba = model.predict_proba(processed_input)
 
-visualize_confidence_level(predict_proba)
+
+
+predict = model.predict(procesar_input)
+predict_probability = model.predict_proba(procesar_input)
+
+
+
+visualizacion(predict_probability)
+
+
+df = pd.read_csv("data/df_wine.csv")
+#Method 1
+st.dataframe(df)
+
