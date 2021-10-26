@@ -2,3 +2,4 @@
 .vscode
 .streamlit/ipynb_checkpoints
 .src/ipynb_checkpoints
+.__pycache__

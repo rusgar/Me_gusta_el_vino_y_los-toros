@@ -1,13 +1,17 @@
 import numpy as np 
 import pandas as pd 
 import joblib 
+import matplotlib.pyplot as plot
 import matplotlib.pyplot as plt
-from matplotlib.ticker import StrMethodFormatter
+import seaborn as sns
 import streamlit as st
 from PIL import Image
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression 
 
-
+st.write("""
+# White-or-red-wine
+### Which one to choose at all times?
+""")
 
 
 # Load  model a 
@@ -26,8 +30,8 @@ def visualizacion(prediction_proba):
     return type : matplotlib bar chart  
     """
     data = (prediction_proba[0]*100).round(2)
-    grad_percentage = pd.DataFrame(data = data,columns = ['Percentage'],index = ['Bajo','Mediano','Bueno'])
-    ax = grad_percentage.plot(kind='barh', figsize=(8, 6), color='#FB6942', zorder=10, width=0.5)
+    grad_percentage = pd.DataFrame(data = data,columns = ['Percentage'],index = ['Bajo','Mediano','Bueno','Excelente'])
+    ax = grad_percentage.plot(kind='barh', figsize=(8, 6), color='#FB6942', zorder=30, width=0.5)
     ax.legend().set_visible(False)
     ax.set_xlim(xmin=0, xmax=100)
     
@@ -40,7 +44,7 @@ def visualizacion(prediction_proba):
     
     value = ax.get_xticks()
     for tick in value:
-        ax.axvline(x=tick, linestyle='dashed', alpha=0.8, color='#FB6942', zorder=1)
+        ax.axvline(x=tick, linestyle='dashed', alpha=0.9, color='#FB6942', zorder=1)
 
     ax.set_xlabel(" Percentage(%) Confidence Level", labelpad=2, weight='bold', size=12)
     ax.set_ylabel("Wine Quality", labelpad=10, weight='bold', size=12)
@@ -58,7 +62,64 @@ Esta aplicación predice la ** Calidad del vino ** mediante la entrada de ** car
 image = Image.open('image/blanco-vs-tinto.png')
 st.image(image, caption='Tinto o Blanco',use_column_width=True)
 
-st.sidebar.header('Introduzca sus cualidades') #colección de parámetros de entrada del usuario con side bar
+codigo = st.expander('¿Necesitas Ayuda? 👉')
+with codigo:
+        st.markdown("Encontraras todas la informacion del dataset en [Rusgar](https://github.com/rusgar/White-or-red-wine), estamos para ayudar ")
+
+#colección de parámetros de entrada del usuario con side bar
+st.sidebar.header('Introduzca sus cualidades') 
+
+dataset = st.selectbox('Haz tu seleccion', ('White', 'Red','Conjunto'))
+def get_data(dataset):
+    data_white = pd.read_csv('data/wine_final_white_todo.csv')
+    data_red = pd.read_csv('data/wine_final_red_todo.csv')
+    data_wine = pd.read_csv('data/df_wine.csv')
+    if dataset == 'White':
+        data = data_white
+    else:
+        data = data_red
+    return data
+
+data_heatmap= get_data(dataset)
+data= get_data(dataset)
+def get_dataset(dataset):
+    bins = (1, 5, 10)
+    groups = ['1', '2']
+    data['quality'] = pd.cut(data['quality'], bins=bins, labels=groups)
+    x = data.drop(columns=['quality'])
+    y = data['quality']
+    return x, y
+
+x, y = get_dataset(data)
+st.write('Conjunto de datos:', data.shape)
+with st.expander('Visualizacion'):
+    plot = st.selectbox('Selecione el tipo **PLot**', ('Histogram', 'Box Plot', 'Heat Map'))
+
+    if plot=='Heat Map':
+        fig1=plt.figure(figsize=(8,6))
+        heatmap = sns.heatmap(data_heatmap.corr()[['quality']].sort_values(by='quality', ascending=False), vmin=-1,
+                              vmax=1, annot=True)
+        heatmap.set_title('Correlacion respecto a la calidad', fontdict={'fontsize': 18}, pad=16)
+        st.pyplot(fig1)
+    else:
+        feature = st.selectbox('Selecione su caracteristica', ('fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
+                                                  'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
+                                                  'pH', 'sulphates', 'alcohol'))
+        if plot == 'Histogram':
+            fig2 = plt.figure(figsize=(7, 5))
+            plt.xlabel(feature)
+            sns.distplot(x[feature])
+            st.pyplot(fig2)
+        else:
+            fig3 = plt.figure(figsize=(3, 3))
+            plt.xlabel(feature)
+            plt.boxplot(x=x[feature])
+            st.pyplot(fig3)
+
+
+
+
+
 
 
 def get_user_input():
@@ -75,12 +136,12 @@ def get_user_input():
     chlorides  = st.sidebar.slider('Chlorides', 0.015, 0.119, 0.051)
     free_sulfur_dioxide = st.sidebar.slider('Free Sulfur Dioxide', 1.00, 80.00, 30.12)
     total_sulfur_dioxide = st.sidebar.slider('Total Sulfur Dioxide', 6.00, 255.00, 115.17)
-    density = st.sidebar.slider('Density', 0.987, 1.001, 0.994)
+    density = st.sidebar.slider('Density', 0.967, 1.001, 0.994)
     pH = st.sidebar.slider('Ph', 2.82, 3.68, 3.21)
     sulphates = st.sidebar.slider('Sulphates', 0.22, 0.98, 0.51)
     alcohol = st.sidebar.slider('Alcohol', 8.4, 14.2, 10.49)
     
-    features = {'color': color,
+    nombres = {'color': color,
             'fixed_acidity': fixed_acidity,
             'volatile_acidity': volatile_acidity,
             'citric_acid': citric_acid,
@@ -93,28 +154,58 @@ def get_user_input():
             'sulphates': sulphates,
             'alcohol': alcohol
             }
-    data = pd.DataFrame(features,index=[0])
+    data = pd.DataFrame(nombres,index=[0])
 
     return data
 
 input_df = get_user_input()
 procesar_input = data_preprocesador(input_df)
 
-st.subheader('Caracteristicas Introducidas')
+
 st.write(input_df)
 
+data=pd.read_csv("data/df_wine.csv")
+X =np.array(data[['color', 'fixed acidity', 'volatile acidity' , 'citric acid' ,'residual sugar', 'chlorides' ,'free sulfur dioxide', 'total sulfur dioxide' ,'density','pH', 'alcohol' , 'sulphates']])
+Y = np.array(data['quality'])
+model = LogisticRegression()
+model.fit(X, Y)
+st.subheader('Etiquetas de clase y su número de índice correspondiente')
+st.write(pd.DataFrame({
+   'wine quality': [ 4, 5, 6, 7 ]}))
 
+predict = model.predict(input_df)
+predict_probability = model.predict_proba(input_df)
+
+st.subheader('Probabilidad que salga segun su calidad')
+st.write(predict_probability)
 
 
 predict = model.predict(procesar_input)
 predict_probability = model.predict_proba(procesar_input)
 
-
-
 visualizacion(predict_probability)
 
+st.subheader('Prediccion del vino')
 
-df = pd.read_csv("data/df_wine.csv")
-#Method 1
-st.dataframe(df)
+type_labels = {
+    4: 'Malo',
+    5: 'Mediano',
+    6: 'Bueno',
+    7: 'Excelente'
+    }
+st.write(
+    type_labels.get(model.predict(input_df)[0]))
+
+st.write(predict)
+st.markdown('4:Malo  5:Mediano  6:Bueno  7:Excelente')
+
+
+
+
+"""
+Created on Wed Oct 27 18:05:00 2022
+@author: Rusgar
+"""
+
+
 
