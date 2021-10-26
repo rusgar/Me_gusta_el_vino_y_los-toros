@@ -108,7 +108,7 @@ As we continue to investigate, we do two testing and training models of the orig
 
 ![Pairing](https://github.com/rusgar/White-or-red-wine/blob/main/image/pairing.png)
 
-<img src="image/accuracy-0.86.png" width="700" height="450">
+<img src="image/accuracy-0.88.png" width="700" height="450">
 
 <img src="image/accuracy-1.png" width="700" height="450">
 
