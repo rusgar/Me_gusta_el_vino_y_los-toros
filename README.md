@@ -1,7 +1,6 @@
 # White-or-red-wine-app
 
-![White-or-red-wine](https://github.com/rusgar/White-or-red-wine/blob/main/image/red-and-wine.jpg)
-
+<img src="image/red-and-wine.jpg" width="800" height="380">
 
 # Project Overview
 
@@ -65,7 +64,7 @@ Input variables (based on physicochemical tests):
 Output variable (based on sensory data): 
 12. quality (score between 3 to 9)
 
-![Calidad del Vino](https://github.com/rusgar/White-or-red-wine/blob/main/image/calidad-vino.png)
+<img src="image/calidad-vino.png" width="600" height="350">
 
 # The Data Science
 
@@ -80,8 +79,7 @@ The data science workflow is a non-linear and iterative task which requires many
 
 [Documentacion](https://www.educba.com/data-science-lifecycle/)
 
-![data-science](https://github.com/rusgar/White-or-red-wine/blob/main/image/data-science.png)
-
+<img src="image/data-science.png" width="800" height="380">
 
 Here I am going to do a simple machine learning with the help of Streamlit to predict the quality of the wine (as in the dataset).
 How to use machine learning to determine what physicochemical properties can make a wine "good", "medium" or "bad" and develop a web application with the help of streamlit to predict the quality of the wine?
@@ -89,15 +87,17 @@ How to use machine learning to determine what physicochemical properties can mak
 ### Understanding, preparing and exploring data analysis
 Once the data is loaded, cleanliness and structure, analysis, type of quality, its graphs, we reduce the atypical data thanks to the (IQR), we observe the correlation of its characteristics, we save it in another .csv
 
-![Correlacion del Vino Tinto](https://github.com/rusgar/White-or-red-wine/blob/main/image/Corr-red.png)
 
-![Correlacion lineal entre densidad y el acido fijo](https://github.com/rusgar/White-or-red-wine/blob/main/image/corr-lineal.png)
+<img src="image/Corr-red.png" width="700" height="450">
+
+<img src="image/corr-lineal.png" width="700" height="450">
 
 ### Data Modeling and evaluation
 
 Union of the two datasets of white and red wine, elimination of duplicates, check the correlation regarding the quality, testing and training of the model, using the decision tree algorithms, with a conclusion of an accuracy of 1.0, in turn, We decompose the graph to distinguish where each wine is and two models so that they tell us the results of the dataset and know the quality of the wine: low, medium, good.
 
-![Grafica del color](https://github.com/rusgar/White-or-red-wine/blob/main/image/grafica-color.png)
+<img src="image/grafica-color.png" width="650" height="300">
+
 ![Grafica del color](https://github.com/rusgar/White-or-red-wine/blob/main/image/comp-corr.png)
 ![Grafica del color](https://github.com/rusgar/White-or-red-wine/blob/main/image/model-corr.png)
 ![Grafica del color](https://github.com/rusgar/White-or-red-wine/blob/main/image/pred-resul.png)
@@ -108,17 +108,16 @@ As we continue to investigate, we do two testing and training models of the orig
 
 ![Pairing](https://github.com/rusgar/White-or-red-wine/blob/main/image/pairing.png)
 
-![Score without the IQR](https://github.com/rusgar/White-or-red-wine/blob/main/image/accuracy-0.86.png)
+<img src="image/accuracy-0.86.png" width="700" height="450">
 
-![Score with the IQR](https://github.com/rusgar/White-or-red-wine/blob/main/image/accuracy-1.png)
-
-
+<img src="image/accuracy-1.png" width="700" height="450">
 
 
 ### Model Deployment
 We are going to use **streamlit**, but before our development model, we use to be more precise **TPOT**, **joblib** to save the model and use it and with **AutoML** (automatic learning) we configure our final app
 
-![AutoML](https://github.com/rusgar/White-or-red-wine/blob/main/image/AutoML.jpg)
+
+<img src="image/AutoML.jpg" width="700" height="350">
 
 [Streamlit](https://streamlit.io/)
 
