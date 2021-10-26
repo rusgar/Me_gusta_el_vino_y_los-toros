@@ -10,11 +10,11 @@ Accuracy Score of Test  Model : 0.447
 
 Comparacion
 ****************************************
-Accuracy Score of Train Model : 0.781
-Accuracy Score of Test  Model : 0.778
+Accuracy Score of Train Model : 0.799
+Accuracy Score of Test  Model : 0.800
 AutoML
-Best pipeline: RandomForestClassifier
-Accuracy Score : 0.896
+Best pipeline: XGBClassifier
+Accuracy Score : 0.885
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
