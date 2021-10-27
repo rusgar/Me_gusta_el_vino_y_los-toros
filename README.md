@@ -62,7 +62,7 @@ Input variables (based on physicochemical tests):
 10. sulphates 
 11 .alcohol 
 Output variable (based on sensory data): 
-12. quality (score between 3 to 9)
+12. quality (score between 4 to 7)
 
 <img src="image/calidad-vino.png" width="600" height="350">
 
