@@ -224,7 +224,7 @@ From this link we can upload our app in production without any difficulty, it wi
                                                                                           --- Benjamin Franklin
 
 
-![Core Code](https://img.shields.io/badge/Code--Core-BDML0521-fb6942)
+![Core Code](https://img.shields.io/badge/Code--Core-bdmlpt0521-fb6942)
 
  Dar las gracias a mis profesores de [Code-Code-School](https://www.corecode.school/):
  * **Marc Pomar**  <img src="image/core.png" width="30" height="30"> - *Founder and creator of the school* - [Marc Pomar](https://github.com/boyander)
