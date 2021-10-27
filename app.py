@@ -8,13 +8,14 @@ import streamlit as st
 from PIL import Image
 from sklearn.linear_model import LogisticRegression
 
+
 st.write("""
 # White-or-red-wine
 ### Which one to choose at all times?
 """)
 
 
-# Load  model a
+# Load  model 
 model = joblib.load(open("src/modelo_wine.joblib", "rb"))
 
 
@@ -63,9 +64,7 @@ def visualizacion(prediction_proba):
     return
 
 
-st.write("""
-Esta aplicación predice la ** Calidad del vino ** mediante la entrada de ** características del vino ** a través del ** panel lateral ** 
-""")
+st.write("""Esta aplicación predice la ** Calidad del vino ** mediante la entrada de ** características del vino ** a través del ** panel lateral ** """)
 
 # leer en la imagen del vino y renderizar con streamlit
 image = Image.open('image/blanco-vs-tinto.png')
@@ -76,7 +75,7 @@ with codigo:
     st.markdown(
         "Encontraras todas la informacion del dataset en [Rusgar](https://github.com/rusgar/White-or-red-wine), estamos para ayudar ")
 
-# colección de parámetros de entrada del usuario con side bar
+# colección de parámetros de entrada del usuario con side_bar
 st.sidebar.header('Introduzca sus cualidades')
 
 dataset = st.selectbox('Haz tu eleccion', ('Conjunto', 'White', 'Red'))
