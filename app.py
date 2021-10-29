@@ -7,7 +7,7 @@ import seaborn as sns
 import streamlit as st
 from PIL import Image
 from sklearn.linear_model import LogisticRegression
-
+import json
 
 st.write("""
 # White-or-red-wine
@@ -15,12 +15,14 @@ st.write("""
 """)
 
 
-# Load  model 
+#Carga del modelo guardado
+
 model = joblib.load(open("src/modelo_wine.joblib", "rb"))
 
 
 def data_preprocesador(df):
-    """función preprocesa la entrada del usuario
+    """
+    función preprocesa la entrada del usuario
         return type: pandas dataframe
     """
     df.color = df.color.map({'white': 0, 'red': 1})
@@ -147,19 +149,19 @@ def get_user_input():
     """
     color = st.sidebar.selectbox(
         "Seleccione el tipo de Vino", ("white", "red"))
-    fixed_acidity = st.sidebar.slider('Fixed Acidity', 4.8, 12.3, 7.12)
-    volatile_acidity = st.sidebar.slider('Volatile Acidity', 0.08, 1.05, 0.32)
-    citric_acid = st.sidebar.slider('Citric Acid', 0.000, 0.730, 0.305)
+    fixed_acidity = st.sidebar.slider('Fixed Acidity', 4.8, 15.9, 7.12)
+    volatile_acidity = st.sidebar.slider('Volatile Acidity', 0.08, 1.58, 0.32)
+    citric_acid = st.sidebar.slider('Citric Acid', 0.000, 1.000, 0.305)
     residual_sugar = st.sidebar.slider('Residual Sugar', 0.6, 22.0, 5.4)
-    chlorides = st.sidebar.slider('Chlorides', 0.015, 0.119, 0.051)
+    chlorides = st.sidebar.slider('Chlorides', 0.015, 0.611, 0.051)
     free_sulfur_dioxide = st.sidebar.slider(
         'Free Sulfur Dioxide', 1.00, 80.00, 30.12)
     total_sulfur_dioxide = st.sidebar.slider(
-        'Total Sulfur Dioxide', 6.00, 255.00, 115.17)
-    density = st.sidebar.slider('Density', 0.967, 1.001, 0.994)
-    pH = st.sidebar.slider('Ph', 2.82, 3.68, 3.21)
-    sulphates = st.sidebar.slider('Sulphates', 0.22, 0.98, 0.51)
-    alcohol = st.sidebar.slider('Alcohol', 8.4, 14.2, 10.49)
+        'Total Sulfur Dioxide', 6.00, 285.00, 115.17)
+    density = st.sidebar.slider('Density', 0.967, 1.501, 0.994)
+    pH = st.sidebar.slider('Ph', 2.82, 4.68, 3.21)
+    sulphates = st.sidebar.slider('Sulphates', 0.22, 1.98, 0.51)
+    alcohol = st.sidebar.slider('Alcohol', 8.4, 14.9, 10.49)
 
     nombres = {'color': color,
                'fixed_acidity': fixed_acidity,
@@ -226,3 +228,53 @@ st.markdown('4:Malo  5:Mediano  6:Bueno  7:Excelente')
 Created on Wed Oct 27 18:05:00 2022
 @author: Rusgar
 """
+
+col1, col2 = st.columns(2)
+with st.form(key='my_form'):
+
+    with col1:
+
+        alcohol = st.number_input(
+            label='Alcohol (vol. %)', min_value=3.5, max_value=15.0, format="%.1f")
+
+        chlorides = st.number_input(
+            label='Chlorides (g(sodium chloride)/dm^3)', min_value=0.000, max_value=0.500, format="%.3f")
+
+        citric_acid = st.number_input(
+            label='Citric acid (g/dm^3)', min_value=0.00, max_value=1.50)
+
+        density = st.number_input(
+            label='Density (g/cm^3)', min_value=0.00, max_value=1.20)
+
+        fixed_acidity = st.number_input(
+            label='Fixed acidity (g(tartaric acid)/dm^3)', min_value=0.0, max_value=17.0, format="%.1f")
+
+        free_sulfur_dioxide = st.number_input(
+            label='Free sulfur dioxide (mg/dm^3)', min_value=0.0, max_value=200.0, format="%.1f")
+
+    with col2:
+
+        pH = st.number_input(
+            label='pH', min_value=0.00, max_value=14.00)
+
+        residual_sugar = st.number_input(
+            label='Residual sugar (g/dm^3)', min_value=0.0, max_value=30.0, format="%.1f")
+
+        sulphates = st.number_input(
+            label='Sulphates (g(potassium sulphate)/dm^3)', min_value=0.00, max_value=2.00)
+
+        total_sulfur_dioxide = st.number_input(
+            label='Total sulfur dioxide (mg/dm^3)', min_value=0.0, max_value=300.0, format="%.1f")
+
+        type = st.selectbox('Select Type', ['red', 'white'], key=2)
+
+        volatile_acidity = st.number_input(
+            label='Volatile acidity (g(acetic acid)/dm^3)', min_value=0.00, max_value=1.50)
+
+    submit = st.form_submit_button(label='Predict')
+
+    dict = {"alcohol": alcohol, "chlorides": chlorides, "citric_acid": citric_acid, "density": density, "fixed_acidity": fixed_acidity, "free_sulfur_dioxide": free_sulfur_dioxide,
+            "pH": pH, "residual_sugar": residual_sugar, "sulphates": sulphates, "total_sulfur_dioxide": total_sulfur_dioxide, "type": type,  "volatile_acidity": volatile_acidity}
+    data_json = json.dumps(dict, indent=1)
+
+    print(data_json)
